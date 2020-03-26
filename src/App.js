@@ -3,7 +3,9 @@ import './App.css';
 import RootApp from './pages/RootApp';
 function App() {
   return (
-    <RootApp/>
+    <div className="App">
+      <RootApp/>
+    </div>
   );
 }
 

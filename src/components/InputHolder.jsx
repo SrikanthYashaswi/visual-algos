@@ -11,7 +11,7 @@ export default class InputHolder extends React.Component {
     render(){
         return(
             <div>
-                <input className="listInput" onChange={this.updateList.bind(this)}></input>
+                <input className="listInput" onChange={this.updateList.bind(this)} placeholder={this.props.placeholder}></input>
             </div>
         );
     }

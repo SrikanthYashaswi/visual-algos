@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './stylesheet/prettylist.css';
 import './stylesheet/inputholder.css';
+import './stylesheet/rootapp.css';
+import './stylesheet/numberview.css';
+import './stylesheet/numberbar.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

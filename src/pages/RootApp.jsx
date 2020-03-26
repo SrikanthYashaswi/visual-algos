@@ -1,13 +1,15 @@
 import React from 'react';
 import InputHolder from '../components/InputHolder';
 import PrettyList from '../components/PrettyList';
-
+import {Properties} from '../components/Constants';
+import SearchingAlgos from '../components/SearchingAlgos';
 export default class RootApp extends React.Component {
 
     constructor() {
         super();
         this.state = {
             numbers: [],
+            selectedComponent: Properties.component.SEARCHING
         }
     }
 
@@ -27,8 +29,11 @@ export default class RootApp extends React.Component {
     render() {
         return (
             <div>
-                <InputHolder onchange={this.onChange.bind(this)} />
-                <PrettyList list={this.state.numbers} />
+                <div className="input-view">
+                    <InputHolder onchange={this.onChange.bind(this)} placeholder="Enter Array"/>
+                    <PrettyList list={this.state.numbers} />
+                </div>
+                <SearchingAlgos list={this.state.numbers}/>
             </div>
         )
     }
