@@ -1,11 +1,23 @@
 import React from 'react';
 import './App.css';
-import RootApp from './pages/RootApp';
+
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import SearchingAlgos from './components/SearchingAlgos';
+import SortingAlgos from './components/SortingAlgos';
+
 function App() {
+
+  function algo(subpath) {
+    return `/${algo}/${subpath}`;
+  }
+
   return (
-    <div className="App">
-      <RootApp/>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/algos/searching" component={SearchingAlgos} />
+        <Route path="/algos/sorting" component={SortingAlgos} />
+      </Switch>
+    </Router>
   );
 }
 

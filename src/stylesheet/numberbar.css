@@ -1,5 +1,12 @@
 .number-view-bar{
-    width: 8px;
+    width:10px;
+    margin-left: 0px;
+}
+
+.number-view-bar > .top {
+    width:100%;
+}
+.number-view-bar > .bottom{
+    width:100%;
     background: blue;
-    margin-left: 2px;
 }

@@ -4,23 +4,23 @@ import NumberBar from './NumberBar';
 
 export default class NumberView extends React.Component {
 
-    getPercentage(){
+    getPercentage() {
         const { list } = this.props;
         const max = maxInList(list);
         let heightPercentage = [];
-        list.map( num => {
-            heightPercentage.push((num / max * 100)+"%");
+        list.map(num => {
+            heightPercentage.push((num / max * 100));
         });
         return heightPercentage;
     }
 
     render() {
         const list = this.getPercentage();
-        const {highlightIndex} = this.props;
+        const { indexHighlights, } = this.props;
         return (
             <div className="number-view">
                 {list.map((height, index) => {
-                    return <NumberBar height={height} highlight={index == highlightIndex}/>
+                    return <NumberBar key={index} height={height} highlight={indexHighlights.includes(index)} />
                 })}
             </div>
         )
