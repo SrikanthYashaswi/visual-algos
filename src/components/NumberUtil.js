@@ -13,7 +13,7 @@ export const maxInList = (list) => {
 export const linearSearch = (list, toFind) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
-        changes.push({indexChanges: [i] })
+        changes.push({ indexChanges: [i] })
         if (toFind === list[i]) {
             break;
         }
@@ -36,7 +36,7 @@ export const getRandomNumbers = (start, end, n) => {
     return numbers;
 }
 
-export const bubbleSort = (list) => {
+export const selectionSort = (list) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
         for (let j = i + 1; j < list.length; j++) {
@@ -58,22 +58,6 @@ export const delayLoop = (list, fn, eachDelay) => {
         fn(list[index], index);
         index++;
         if (index === listLen) {
-            clearInterval(interval);
-        }
-    }, eachDelay);
-}
-
-const delayLoopMap = (map, fn, eachDelay) => {
-    const keys = Object.keys(map);
-    const length = keys.length;
-    let index = 0;
-    let interval = setInterval(() => {
-        const key = keys[index++];
-        const value = map[key];
-
-        fn(key, value);
-        console.log(`${index} ${length}`)
-        if (index === length) {
             clearInterval(interval);
         }
     }, eachDelay);

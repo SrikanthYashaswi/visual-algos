@@ -1,5 +1,5 @@
 import React from 'react';
-import { delayOperation, getRandomNumbers, bubbleSort, delayLoop } from './NumberUtil';
+import { getRandomNumbers, selectionSort, delayLoop } from './NumberUtil';
 import NumberView from './NumberView';
 import PrettyList from '../components/PrettyList';
 
@@ -13,9 +13,9 @@ export default class SortingAlgos extends React.Component {
         }
     }
 
-    bubbleSort() {
-        const changes = bubbleSort(this.state.numbers);
-        delayLoop(changes, this.setChangingList.bind(this), 100);
+    selectionSort() {
+        const changes = selectionSort(this.state.numbers);
+        delayLoop(changes, this.setChangingList.bind(this), 20);
     }
 
     setChangingList(change) {
@@ -30,7 +30,7 @@ export default class SortingAlgos extends React.Component {
                     <button onClick={() => this.setState({ numbers: getRandomNumbers(1, 100, 80) })}>Ramdom</button>
                     <PrettyList list={numbers} />
                 </div>
-                <button onClick={this.bubbleSort.bind(this)}>Bubble Sort</button>
+                <button onClick={this.selectionSort.bind(this)}>Selection Sort</button>
                 <NumberView list={numbers} indexHighlights={indexChanges} />
             </div>
         );
