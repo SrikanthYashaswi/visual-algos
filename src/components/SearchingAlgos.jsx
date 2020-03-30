@@ -2,7 +2,7 @@ import React from 'react';
 import NumberView from './NumberView';
 import InputHolder from '../components/InputHolder';
 import PrettyList from '../components/PrettyList';
-import { linearSearch } from '../components/NumberUtil';
+import { linearSearch, delayLoop } from '../components/NumberUtil';
 import { getRandomNumbers } from '../components/NumberUtil';
 
 export default class SearchingAlgos extends React.Component {
@@ -12,8 +12,7 @@ export default class SearchingAlgos extends React.Component {
         this.state = {
             numbers: [],
             toFindNumber: null,
-            searchIndex: -1,
-            searchMatch: false
+            indexChanges: [],
         }
     }
 
@@ -24,15 +23,16 @@ export default class SearchingAlgos extends React.Component {
     simpleSearch() {
         const { toFindNumber, numbers } = this.state;
         if (toFindNumber !== null) {
-            linearSearch(numbers, toFindNumber[0], this.notifySearchIndex.bind(this))
+            const changes = linearSearch(numbers, toFindNumber[0]);
+            delayLoop(changes, this.setChanges.bind(this))
         }
     }
-    notifySearchIndex(index, match) {
-        this.setState({ searchIndex: index, searchMatch: match });
+    setChanges(change) {
+        this.setState({ indexChanges: change.indexChanges });
     }
 
     render() {
-        const { searchIndex, searchMatch, numbers } = this.state;
+        const { numbers, indexChanges } = this.state;
         return (
             <div>
                 <div className="input-view">
@@ -41,7 +41,7 @@ export default class SearchingAlgos extends React.Component {
                 </div>
                 <InputHolder onchange={this.setToFindNumber.bind(this)} placeholder="Number To Find" />
                 <button onClick={this.simpleSearch.bind(this)}>Linear Search</button>
-                <NumberView list={numbers} highlightIndex={searchIndex} match={searchMatch} />
+                <NumberView list={numbers} indexHighlights={indexChanges} />
             </div>
         )
     }

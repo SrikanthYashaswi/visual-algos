@@ -10,12 +10,15 @@ export const maxInList = (list) => {
     return max;
 }
 
-export const linearSearch = (list, toFind, callback) => {
-    delayLoop(list, (item, i) => {
-        let found = (item === toFind);
-        callback(i, found);
-        return found;
-    }, TIME_DELAY);
+export const linearSearch = (list, toFind) => {
+    let changes = [];
+    for (let i = 0; i < list.length; i++) {
+        changes.push({indexChanges: [i] })
+        if (toFind === list[i]) {
+            break;
+        }
+    }
+    return changes;
 }
 
 export const getRandomNumbers = (start, end, n) => {
@@ -33,15 +36,8 @@ export const getRandomNumbers = (start, end, n) => {
     return numbers;
 }
 
-export const delayOperation = (list, emitChange) => {
+export const bubbleSort = (list) => {
     let changes = [];
-    bubbleSort(list, (change) => changes.push(change));
-    delayLoopMap(changes, (key, value) => {
-        emitChange(value);
-    }, 20);
-}
-
-export const bubbleSort = (list, emitChange) => {
     for (let i = 0; i < list.length; i++) {
         for (let j = i + 1; j < list.length; j++) {
             if (list[i] > list[j]) {
@@ -49,19 +45,19 @@ export const bubbleSort = (list, emitChange) => {
                 list[j] = list[i];
                 list[i] = t;
             }
-            emitChange({ list: [...list], indexChanges: [i, j] });
+            changes.push({ list: [...list], indexChanges: [i, j] });
         }
     }
-    return list;
+    return changes;
 }
 
-const delayLoop = (list, fn, eachDelay) => {
+export const delayLoop = (list, fn, eachDelay) => {
     const listLen = list.length;
     let index = 0;
     let interval = setInterval(() => {
-        let found = fn(list[index], index);
+        fn(list[index], index);
         index++;
-        if (found || index === listLen) {
+        if (index === listLen) {
             clearInterval(interval);
         }
     }, eachDelay);
