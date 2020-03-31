@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRandomNumbers, selectionSort, delayLoop } from './NumberUtil';
-import NumberView from './NumberView';
+import NumberView from './NumberView.js';
 import PrettyList from '../components/PrettyList';
 
 export default class SortingAlgos extends React.Component {
@@ -15,11 +15,15 @@ export default class SortingAlgos extends React.Component {
 
     selectionSort() {
         const changes = selectionSort(this.state.numbers);
-        delayLoop(changes, this.setChangingList.bind(this), 20);
+        delayLoop(changes, this.setChangingList.bind(this), 200);
     }
 
     setChangingList(change) {
         this.setState({ numbers: change.list, indexChanges: change.indexChanges });
+    }
+
+    setRandomNumbers() {
+        this.setState({ numbers: getRandomNumbers(1, 100, 80) , indexChanges: []});
     }
 
     render() {

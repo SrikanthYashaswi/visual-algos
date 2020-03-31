@@ -13,7 +13,7 @@ export const maxInList = (list) => {
 export const linearSearch = (list, toFind) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
-        changes.push({ indexChanges: [i] })
+        changes.push({indexChanges: [i] })
         if (toFind === list[i]) {
             break;
         }
