@@ -98,7 +98,7 @@ export default class SortingAlgos extends React.Component {
     }
 
     setRandomNumbers() {
-        this.setState({ numbers: getRandomNumbers(1, 100, 80), indexChanges: [] });
+        this.setState({ numbers: getRandomNumbers(10, 100, 30), indexChanges: [] });
         this.sortingChanges = null;
         this.changeListIndex = 0;
         this.playState = MACHINE_STATE.PAUSE;
