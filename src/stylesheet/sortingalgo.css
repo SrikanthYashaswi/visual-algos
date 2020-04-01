@@ -1,0 +1,13 @@
+.algo-select-btn{
+    height:40px;
+    background-color: #fbfbfb;
+}
+
+.selected{
+    background-color: #ffece6 !important;
+}
+
+.algo-select-holder{
+    display: grid;
+    width: 100px;
+}

@@ -56,7 +56,7 @@ export const insertionSort = (list) => {
     let temp;
     for (let i = 1; i < listLength; i++) {
         changes.push({ list: [...arr], indexChanges: [i] });
-        for (let j = i; j >= 0; j--) {
+        for (let j = i; j > 0; j--) {
             if (arr[j - 1] < arr[j]) {
                 break;
             }
@@ -79,4 +79,17 @@ export const delayLoop = (list, fn, eachDelay) => {
             clearInterval(interval);
         }
     }, eachDelay);
+    return interval;
+}
+
+export const delayIndexLoop = (start, end, fn, eachDelay) => {
+    let index = start;
+    let interval = setInterval(() => {
+        fn(index);
+        index++
+        if (index === end) {
+            clearInterval(interval);
+        }
+    }, eachDelay);
+    return interval;
 }
