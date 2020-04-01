@@ -6,6 +6,7 @@ import './stylesheet/inputholder.css';
 import './stylesheet/rootapp.css';
 import './stylesheet/numberview.css';
 import './stylesheet/numberbar.css';
+import './stylesheet/sortingalgo.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

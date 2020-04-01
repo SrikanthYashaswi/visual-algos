@@ -10,3 +10,6 @@
     width:100%;
     background: blue;
 }
+.number-view-bar > .highlight{
+    background: #051f96;
+}
