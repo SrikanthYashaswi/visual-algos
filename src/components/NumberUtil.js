@@ -1,5 +1,3 @@
-const TIME_DELAY = 50;
-
 export const maxInList = (list) => {
     let max = -1;
     list.map(num => {
@@ -13,7 +11,7 @@ export const maxInList = (list) => {
 export const linearSearch = (list, toFind) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
-        changes.push({indexChanges: [i] })
+        changes.push({ indexChanges: [i] })
         if (toFind === list[i]) {
             break;
         }
@@ -46,6 +44,26 @@ export const selectionSort = (list) => {
                 list[i] = t;
             }
             changes.push({ list: [...list], indexChanges: [i, j] });
+        }
+    }
+    return changes;
+}
+
+export const insertionSort = (list) => {
+    let changes = [];
+    let arr = list;
+    let listLength = arr.length;
+    let temp;
+    for (let i = 1; i < listLength; i++) {
+        changes.push({ list: [...arr], indexChanges: [i] });
+        for (let j = i; j >= 0; j--) {
+            if (arr[j - 1] < arr[j]) {
+                break;
+            }
+            temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+            changes.push({ list: [...arr], indexChanges: [j, j - 1] });
         }
     }
     return changes;
