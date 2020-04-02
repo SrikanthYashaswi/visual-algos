@@ -1,5 +1,5 @@
- - Selection Sort
- - Insertion Sort
+ - Selection Sort ✅
+ - Insertion Sort ✅
  - Binary Insertion Sort
  - Merge Sort
  - Quick Sort (LR ptrs)

@@ -1,7 +1,8 @@
 import React from 'react';
-import { getRandomNumbers, delayIndexLoop, getSortEventsForAlgorithm } from './NumberUtil';
+import { getRandomNumbers, delayIndexLoop } from './NumberUtil';
 import NumberView from './NumberView.js';
 import { Properties } from './Constants';
+import {sortingAlgorithms, getSortEventsForAlgorithm} from '../algorithms/SortingAlgorithmUtil';
 const MACHINE_STATE = {
     PLAY: 'play', PAUSE: 'pause'
 }
@@ -14,25 +15,24 @@ export default class SortingAlgos extends React.Component {
         this.state = initState.state;
 
         this.sortEvents = initState.sortEvents;
-        this.sortEventIndex = initState.sortEventIndex;
         this.playState = initState.playState;
         this.intervalInstance = null;
         document.addEventListener("keydown", this.handleKey.bind(this), false);
     }
 
     getInitState() {
-        const numbers = getRandomNumbers(10, 100, 30);
-        const sortEvents = getSortEventsForAlgorithm(Properties.sortingAlgorithms.SELECTION_SORT, [...numbers]);
+        const numbers = getRandomNumbers(10, 100, 40);
+        const sortEvents = getSortEventsForAlgorithm(sortingAlgorithms.SELECTION_SORT, [...numbers]);
 
         return {
             state: {
                 numbers: numbers,
                 sortEventIndexChange: [],
-                selectedAlgorithm: Properties.sortingAlgorithms.SELECTION_SORT
+                sortEventIndex: 0,
+                selectedAlgorithm: sortingAlgorithms.SELECTION_SORT
             },
             sortEvents: sortEvents,
             playState: MACHINE_STATE.PAUSE,
-            sortEventIndex: 0
         }
     }
 
@@ -41,7 +41,6 @@ export default class SortingAlgos extends React.Component {
         this.setState({ ...init.state });
 
         this.sortEvents = init.sortEvents;
-        this.sortEventIndex = init.sortEventIndex;
         this.playState = init.playState;
         clearInterval(this.intervalInstance);
         this.intervalInstance = null;
@@ -68,25 +67,15 @@ export default class SortingAlgos extends React.Component {
     }
 
     moveForeward() {
-        this.sortEventIndex++;
-        if (this.sortEventIndex >= this.sortEvents.length) {
-            this.sortEventIndex = this.sortEvents.length;
-        }
-        if (this.sortEventIndex < this.sortEvents.length) {
-            const change = this.sortEvents[this.sortEventIndex];
-            this.setState({ numbers: change.list, sortEventIndexChange: change.indexChanges });
-        }
+        const { sortEventIndex } = this.state;
+        if (sortEventIndex < this.sortEvents.length - 1)
+            this.setState({ sortEventIndex: sortEventIndex + 1 })
     }
 
     moveBackward() {
-        this.sortEventIndex--;
-        if (this.sortEventIndex <= 0) {
-            this.sortEventIndex = 0;
-        }
-        if (this.sortEventIndex > 0) {
-            const change = this.sortEvents[this.sortEventIndex];
-            this.setState({ numbers: change.list, sortEventIndexChange: change.indexChanges });
-        }
+        const { sortEventIndex } = this.state;
+        if (sortEventIndex - 1 >= 0)
+            this.setState({ sortEventIndex: sortEventIndex - 1 })
     }
 
     togglePlayPause() {
@@ -99,7 +88,7 @@ export default class SortingAlgos extends React.Component {
     }
 
     playChanges() {
-        this.intervalInstance = delayIndexLoop(this.sortEventIndex,
+        this.intervalInstance = delayIndexLoop(this.state.sortEventIndex,
             this.sortEvents.length, this.moveForeward.bind(this), Properties.TIME_DELAY);
         this.playState = MACHINE_STATE.PLAY;
     }
@@ -118,12 +107,12 @@ export default class SortingAlgos extends React.Component {
     setSortEvents(algorithm) {
         const { numbers } = this.state;
         this.sortEvents = getSortEventsForAlgorithm(algorithm, [...numbers]);
-        this.sortEventIndex = 0;
+        this.setState({ sortEventIndex: 0 });
     }
 
     renderSortingTypes() {
         const { selectedAlgorithm } = this.state;
-        const algorithmList = Properties.sortingAlgorithms;
+        const algorithmList = sortingAlgorithms;
         const keys = Object.keys(algorithmList);
         return (
             <div className="algo-select-holder">
@@ -140,7 +129,8 @@ export default class SortingAlgos extends React.Component {
     }
 
     render() {
-        let { numbers, sortEventIndexChange } = this.state;
+        const { sortEventIndex } = this.state;
+        const change = this.sortEvents[sortEventIndex];
         return (
             <div >
                 <div className="input-view">
@@ -148,7 +138,7 @@ export default class SortingAlgos extends React.Component {
                 </div>
                 {this.renderSortingTypes()}
                 <button onClick={this.togglePlayPause.bind(this)}>PLAY/PAUSE</button>
-                <NumberView list={numbers} indexHighlights={sortEventIndexChange} />
+                <NumberView list={change.list} indexHighlights={change.indexChanges} />
             </div>
         );
     }

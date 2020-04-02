@@ -2,11 +2,7 @@ export const Properties = {
     component: {
         SEARCHING: 'searching',
     },
-    sortingAlgorithms: {
-        SELECTION_SORT: 'selection-sort',
-        INSERTION_SORT: 'insertion-sort'
-    },
-    TIME_DELAY: 10,
+    TIME_DELAY: 100,
     keyPress: {
         SPACEBAR: 32,
         LEFT: 37,
