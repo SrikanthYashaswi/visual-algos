@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class NumberBar extends React.Component {
     render() {
-        const { height, highlight, match } = this.props;
+        const { height, highlight, value } = this.props;
         let bottomBarStyle = { height: height+"%" };
         let topBarStyle = { height: (100 - height)+"%"};
 
@@ -10,6 +10,7 @@ export default class NumberBar extends React.Component {
             <div className="number-view-bar">
                 <div className="top" style={topBarStyle} ></div>
                 <div className={`bottom ${highlight ? 'highlight': ''}`} style={bottomBarStyle} ></div>
+                <span className="barValue">{value}</span>
             </div>
         )
     }

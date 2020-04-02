@@ -1,6 +1,6 @@
 .number-view-bar{
-    width:10px;
-    margin-left: 4px;
+    width:15px;
+    margin-left: 0px;
 }
 
 .number-view-bar > .top {
@@ -12,4 +12,7 @@
 }
 .number-view-bar > .highlight{
     background: #051f96;
+}
+.barValue{
+    font-size:9px;
 }

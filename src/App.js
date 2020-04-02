@@ -6,11 +6,6 @@ import SearchingAlgos from './components/SearchingAlgos';
 import SortingAlgos from './components/SortingAlgos';
 
 function App() {
-
-  function algo(subpath) {
-    return `/${algo}/${subpath}`;
-  }
-
   return (
     <Router>
       <Switch>
