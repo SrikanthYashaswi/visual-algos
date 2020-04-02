@@ -1,7 +1,8 @@
 import React from 'react';
-import { getRandomNumbers, delayIndexLoop, getSortEventsForAlgorithm } from './NumberUtil';
+import { getRandomNumbers, delayIndexLoop } from './NumberUtil';
 import NumberView from './NumberView.js';
 import { Properties } from './Constants';
+import {sortingAlgorithms, getSortEventsForAlgorithm} from '../algorithms/SortingAlgorithmUtil';
 const MACHINE_STATE = {
     PLAY: 'play', PAUSE: 'pause'
 }
@@ -21,14 +22,14 @@ export default class SortingAlgos extends React.Component {
 
     getInitState() {
         const numbers = getRandomNumbers(10, 100, 30);
-        const sortEvents = getSortEventsForAlgorithm(Properties.sortingAlgorithms.SELECTION_SORT, [...numbers]);
+        const sortEvents = getSortEventsForAlgorithm(sortingAlgorithms.SELECTION_SORT, [...numbers]);
 
         return {
             state: {
                 numbers: numbers,
                 sortEventIndexChange: [],
                 sortEventIndex: 0,
-                selectedAlgorithm: Properties.sortingAlgorithms.SELECTION_SORT
+                selectedAlgorithm: sortingAlgorithms.SELECTION_SORT
             },
             sortEvents: sortEvents,
             playState: MACHINE_STATE.PAUSE,
@@ -111,7 +112,7 @@ export default class SortingAlgos extends React.Component {
 
     renderSortingTypes() {
         const { selectedAlgorithm } = this.state;
-        const algorithmList = Properties.sortingAlgorithms;
+        const algorithmList = sortingAlgorithms;
         const keys = Object.keys(algorithmList);
         return (
             <div className="algo-select-holder">

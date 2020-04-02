@@ -1,6 +1,3 @@
-import { Properties } from "./Constants";
-import { selectionSort } from '../algorithms/selectionSort';
-import { insertionSort } from "../algorithms/insertionSort";
 export const linearSearch = (list, toFind) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
@@ -25,20 +22,6 @@ export const getRandomNumbers = (start, end, n) => {
         }
     }
     return numbers;
-}
-
-export const getSortEventsForAlgorithm = (algorithm, list) => {
-    switch (algorithm) {
-        case Properties.sortingAlgorithms.SELECTION_SORT: {
-            return selectionSort(list);
-        }
-        case Properties.sortingAlgorithms.INSERTION_SORT: {
-            return insertionSort(list);
-        }
-        default: {
-            return []
-        }
-    }
 }
 
 export const delayLoop = (list, fn, eachDelay) => {
