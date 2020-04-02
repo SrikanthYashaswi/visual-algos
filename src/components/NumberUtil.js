@@ -1,12 +1,4 @@
-export const maxInList = (list) => {
-    let max = -1;
-    list.map(num => {
-        if (num > max) {
-            max = num;
-        }
-    })
-    return max;
-}
+import { Properties } from "./Constants";
 
 export const linearSearch = (list, toFind) => {
     let changes = [];
@@ -34,8 +26,23 @@ export const getRandomNumbers = (start, end, n) => {
     return numbers;
 }
 
+export const getSortEventsForAlgorithm = (algorithm, list) => {
+    switch (algorithm) {
+        case Properties.sortingAlgorithms.SELECTION_SORT: {
+            return selectionSort(list);
+        }
+        case Properties.sortingAlgorithms.INSERTION_SORT: {
+            return insertionSort(list);
+        }
+        default: {
+            return []
+        }
+    }
+}
+
 export const selectionSort = (list) => {
     let changes = [];
+    changes.push({ list: [...list], indexChanges: [0, 0] });
     for (let i = 0; i < list.length; i++) {
         for (let j = i + 1; j < list.length; j++) {
             if (list[i] > list[j]) {
