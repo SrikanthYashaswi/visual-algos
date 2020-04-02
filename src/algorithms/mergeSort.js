@@ -1,10 +1,10 @@
 export const mergeSort = (list) => {
-    changes = [{ list: [...list], indexChanges: [] }]
-    internalMergeSort(list, 0, list.length, 0, changes);
+    let changes = [{ list: [...list], indexChanges: [0] }]
+    internalMergeSort(list, 0, list.length, changes);
     return changes;
 }
 
-function internalMergeSort(list, start, end, depth, changes) {
+function internalMergeSort(list, start, end, changes) {
     if (list.length == 1) {
         return list;
     }
@@ -12,68 +12,41 @@ function internalMergeSort(list, start, end, depth, changes) {
     let pivot = Math.trunc((list.length - 0) / 2);
     let front = list.slice(0, pivot);
     let back = list.slice(pivot, list.length);
-    console.log(`${'\t'.repeat(depth)} ${start} ${identifierPivot}`)
+    let nfront = internalMergeSort(front, start, identifierPivot, changes);
+    let nback = internalMergeSort(back, identifierPivot, end, changes);
+    let merged = merge(nfront, nback, changes);
+    let previousChange = [...changes[changes.length - 1].list];
+    let indexChanges = [];
+    merged.forEach((item, index) => {
+        previousChange[start + index] = item
+        indexChanges.push(start + index);
+    })
+    changes.push({ list: previousChange, indexChanges: indexChanges });
+    return merged;
+}
 
-    let nfront = internalMergeSort(front, start, identifierPivot, depth + 1, changes);
-    console.log(`${'\t'.repeat(depth + 1)} ${nfront} [${start} ${identifierPivot}]`)
-
-    console.log(`${'\t'.repeat(depth)} ${identifierPivot} ${end}`)
-    let nback = internalMergeSort(back, identifierPivot, end, depth + 1, changes);
-    console.log(`${'\t'.repeat(depth + 1)} ${nback} [${identifierPivot} ${end}]`)
-
-    let k = [];
+let merge = (nfront, nback, changes) => {
+    let k = new Array(nfront.length + nback.length);
+    let ki = 0;
     let ifront = nfront.length;
     let iback = nback.length;
     let fi = 0, bi = 0;
     while (fi < ifront && bi < iback) {
         if (nfront[fi] < nback[bi]) {
-            k.push(nfront[fi]);
+            k[ki++] = nfront[fi];
             fi++;
         }
         else {
-            k.push(nback[bi]);
+            k[ki++] = nback[bi];
             bi++;
         }
     }
-    if (fi < ifront) {
-        k.push(nfront[fi])
+
+    while (fi < ifront) {
+        k[ki++] = nfront[fi++]
     }
-    else {
-        k.push(nback[bi])
+    while (bi < iback) {
+        k[ki++] = nback[bi++]
     }
-    let change = { ...changes[changes.length - 1] };
-    change.indexChanges = [];
-    k.forEach((item, index) => {
-        change.list[start + index] = item
-        change.indexChanges.push(start + index);
-    })
-    changes.push(change);
     return k;
 }
-/*
-    0 3
-    [9,8,7]
-    3/2 = 1
-    p = 1
-    front = (0,1) [9]
-        > [1], 0, 1
-
-    end = (2,3) [8,7]
-        > [8,7], 2,3
-        3-2/2 = 0
-        p = 0
-        front = (0,0) []
-
-        if(front.length = 0){
-            pivot =
-        }
-        back = (1,2) = []
-    [9,2,7,3]
-
-    [9,2]  [7,3]
-    [9] [2]
-    [2,9]  [3,7]
-    [2,3,7]
-
-
-*/

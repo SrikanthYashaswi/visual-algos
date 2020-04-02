@@ -21,7 +21,7 @@ export default class SortingAlgos extends React.Component {
     }
 
     getInitState() {
-        const numbers = getRandomNumbers(10, 100, 30);
+        const numbers = getRandomNumbers(10, 100, 40);
         const sortEvents = getSortEventsForAlgorithm(sortingAlgorithms.SELECTION_SORT, [...numbers]);
 
         return {
@@ -88,7 +88,7 @@ export default class SortingAlgos extends React.Component {
     }
 
     playChanges() {
-        this.intervalInstance = delayIndexLoop(this.sortEventIndex,
+        this.intervalInstance = delayIndexLoop(this.state.sortEventIndex,
             this.sortEvents.length, this.moveForeward.bind(this), Properties.TIME_DELAY);
         this.playState = MACHINE_STATE.PLAY;
     }

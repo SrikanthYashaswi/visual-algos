@@ -41,7 +41,7 @@ export const delayIndexLoop = (start, end, fn, eachDelay) => {
     let index = start;
     let interval = setInterval(() => {
         fn(index);
-        index++
+        index++;
         if (index === end) {
             clearInterval(interval);
         }
