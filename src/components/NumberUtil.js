@@ -56,12 +56,11 @@ export const selectionSort = (list) => {
     return changes;
 }
 
-export const insertionSort = (list) => {
+export const insertionSort = (arr) => {
     let changes = [];
-    let arr = list;
-    let listLength = arr.length;
     let temp;
-    for (let i = 1; i < listLength; i++) {
+    changes.push({ list: [...arr], indexChanges: [0] });
+    for (let i = 1; i < arr.length; i++) {
         changes.push({ list: [...arr], indexChanges: [i] });
         for (let j = i; j > 0; j--) {
             if (arr[j - 1] < arr[j]) {
