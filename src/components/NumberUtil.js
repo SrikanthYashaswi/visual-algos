@@ -1,5 +1,6 @@
 import { Properties } from "./Constants";
-
+import { selectionSort } from '../algorithms/selectionSort';
+import { insertionSort } from "../algorithms/insertionSort";
 export const linearSearch = (list, toFind) => {
     let changes = [];
     for (let i = 0; i < list.length; i++) {
@@ -38,41 +39,6 @@ export const getSortEventsForAlgorithm = (algorithm, list) => {
             return []
         }
     }
-}
-
-export const selectionSort = (list) => {
-    let changes = [];
-    changes.push({ list: [...list], indexChanges: [0, 0] });
-    for (let i = 0; i < list.length; i++) {
-        for (let j = i + 1; j < list.length; j++) {
-            if (list[i] > list[j]) {
-                const t = list[j];
-                list[j] = list[i];
-                list[i] = t;
-            }
-            changes.push({ list: [...list], indexChanges: [i, j] });
-        }
-    }
-    return changes;
-}
-
-export const insertionSort = (arr) => {
-    let changes = [];
-    let temp;
-    changes.push({ list: [...arr], indexChanges: [0] });
-    for (let i = 1; i < arr.length; i++) {
-        changes.push({ list: [...arr], indexChanges: [i] });
-        for (let j = i; j > 0; j--) {
-            if (arr[j - 1] < arr[j]) {
-                break;
-            }
-            temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
-            changes.push({ list: [...arr], indexChanges: [j, j - 1] });
-        }
-    }
-    return changes;
 }
 
 export const delayLoop = (list, fn, eachDelay) => {
