@@ -14,7 +14,6 @@ export default class SortingAlgos extends React.Component {
         this.state = initState.state;
 
         this.sortEvents = initState.sortEvents;
-        this.sortEventIndex = initState.sortEventIndex;
         this.playState = initState.playState;
         this.intervalInstance = null;
         document.addEventListener("keydown", this.handleKey.bind(this), false);
@@ -28,11 +27,11 @@ export default class SortingAlgos extends React.Component {
             state: {
                 numbers: numbers,
                 sortEventIndexChange: [],
+                sortEventIndex: 0,
                 selectedAlgorithm: Properties.sortingAlgorithms.SELECTION_SORT
             },
             sortEvents: sortEvents,
             playState: MACHINE_STATE.PAUSE,
-            sortEventIndex: 0
         }
     }
 
@@ -41,7 +40,6 @@ export default class SortingAlgos extends React.Component {
         this.setState({ ...init.state });
 
         this.sortEvents = init.sortEvents;
-        this.sortEventIndex = init.sortEventIndex;
         this.playState = init.playState;
         clearInterval(this.intervalInstance);
         this.intervalInstance = null;
@@ -68,25 +66,15 @@ export default class SortingAlgos extends React.Component {
     }
 
     moveForeward() {
-        this.sortEventIndex++;
-        if (this.sortEventIndex >= this.sortEvents.length) {
-            this.sortEventIndex = this.sortEvents.length;
-        }
-        if (this.sortEventIndex < this.sortEvents.length) {
-            const change = this.sortEvents[this.sortEventIndex];
-            this.setState({ numbers: change.list, sortEventIndexChange: change.indexChanges });
-        }
+        const { sortEventIndex } = this.state;
+        if (sortEventIndex < this.sortEvents.length - 1)
+            this.setState({ sortEventIndex: sortEventIndex + 1 })
     }
 
     moveBackward() {
-        this.sortEventIndex--;
-        if (this.sortEventIndex <= 0) {
-            this.sortEventIndex = 0;
-        }
-        if (this.sortEventIndex > 0) {
-            const change = this.sortEvents[this.sortEventIndex];
-            this.setState({ numbers: change.list, sortEventIndexChange: change.indexChanges });
-        }
+        const { sortEventIndex } = this.state;
+        if (sortEventIndex - 1 >= 0)
+            this.setState({ sortEventIndex: sortEventIndex - 1 })
     }
 
     togglePlayPause() {
@@ -118,7 +106,7 @@ export default class SortingAlgos extends React.Component {
     setSortEvents(algorithm) {
         const { numbers } = this.state;
         this.sortEvents = getSortEventsForAlgorithm(algorithm, [...numbers]);
-        this.sortEventIndex = 0;
+        this.setState({ sortEventIndex: 0 });
     }
 
     renderSortingTypes() {
@@ -140,7 +128,8 @@ export default class SortingAlgos extends React.Component {
     }
 
     render() {
-        let { numbers, sortEventIndexChange } = this.state;
+        const { sortEventIndex } = this.state;
+        const change = this.sortEvents[sortEventIndex];
         return (
             <div >
                 <div className="input-view">
@@ -148,7 +137,7 @@ export default class SortingAlgos extends React.Component {
                 </div>
                 {this.renderSortingTypes()}
                 <button onClick={this.togglePlayPause.bind(this)}>PLAY/PAUSE</button>
-                <NumberView list={numbers} indexHighlights={sortEventIndexChange} />
+                <NumberView list={change.list} indexHighlights={change.indexChanges} />
             </div>
         );
     }
