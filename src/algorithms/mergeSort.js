@@ -5,7 +5,7 @@ export const mergeSort = (list) => {
 }
 
 function internalMergeSort(list, start, end, changes) {
-    if (list.length == 1) {
+    if (list.length === 1) {
         return list;
     }
     let identifierPivot = Math.trunc((end - start) / 2) + start;

@@ -2,7 +2,7 @@ import React from 'react';
 import { getRandomNumbers, delayIndexLoop } from './NumberUtil';
 import NumberView from './NumberView.js';
 import { Properties } from './Constants';
-import {sortingAlgorithms, getSortEventsForAlgorithm} from '../algorithms/SortingAlgorithmUtil';
+import { sortingAlgorithms, getSortEventsForAlgorithm } from '../algorithms/SortingAlgorithmUtil';
 const MACHINE_STATE = {
     PLAY: 'play', PAUSE: 'pause'
 }
@@ -133,12 +133,19 @@ export default class SortingAlgos extends React.Component {
         const change = this.sortEvents[sortEventIndex];
         return (
             <div >
-                <div className="input-view">
-                    <button onClick={this.initialize.bind(this)}>Reset</button>
-                </div>
                 {this.renderSortingTypes()}
-                <button onClick={this.togglePlayPause.bind(this)}>PLAY/PAUSE</button>
                 <NumberView list={change.list} indexHighlights={change.indexChanges} />
+                <center>
+                    <button className="playpause-btn" onClick={this.moveBackward.bind(this)}>◀️</button>
+                    <button className="playpause-btn" onClick={this.togglePlayPause.bind(this)}>⏯</button>
+                    <button className="playpause-btn" onClick={this.moveForeward.bind(this)}>▶️</button>
+                </center>
+                <center>
+                    <button className="playpause-btn" onClick={this.initialize.bind(this)}>🔄</button>
+                </center>
+                <center>
+                    <span style={{fontFamily: "monospace"}}> [Play. Pause. Use Arrows. Learn.]</span>
+                </center>
             </div>
         );
     }

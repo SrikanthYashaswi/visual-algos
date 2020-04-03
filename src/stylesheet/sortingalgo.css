@@ -11,3 +11,8 @@
     display: grid;
     width: 100px;
 }
+
+.playpause-btn{
+    border: 0px;
+    font-size: 24px;
+}

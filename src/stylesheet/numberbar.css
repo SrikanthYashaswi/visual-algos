@@ -8,10 +8,10 @@
 }
 .number-view-bar > .bottom{
     width:100%;
-    background: blue;
+    background: #6e6eff;;
 }
 .number-view-bar > .highlight{
-    background: #051f96;
+    background: #00051a;
 }
 .barValue{
     font-size:9px;

@@ -10,7 +10,6 @@ export default class NumberBar extends React.Component {
             <div className="number-view-bar">
                 <div className="top" style={topBarStyle} ></div>
                 <div className={`bottom ${highlight ? 'highlight': ''}`} style={bottomBarStyle} ></div>
-                <span className="barValue">{value}</span>
             </div>
         )
     }
