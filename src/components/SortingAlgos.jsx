@@ -15,13 +15,12 @@ export default class SortingAlgos extends React.Component {
         this.state = initState.state;
 
         this.sortEvents = initState.sortEvents;
-        this.playState = initState.playState;
         this.intervalInstance = null;
         document.addEventListener("keydown", this.handleKey.bind(this), false);
     }
 
     getInitState() {
-        const numbers = getRandomNumbers(10, 100, 40);
+        const numbers = getRandomNumbers(10, 300, 200);
         const sortEvents = getSortEventsForAlgorithm(sortingAlgorithms.SELECTION_SORT, [...numbers]);
 
         return {
@@ -29,10 +28,10 @@ export default class SortingAlgos extends React.Component {
                 numbers: numbers,
                 sortEventIndexChange: [],
                 sortEventIndex: 0,
-                selectedAlgorithm: sortingAlgorithms.SELECTION_SORT
+                selectedAlgorithm: sortingAlgorithms.SELECTION_SORT,
+                playState: MACHINE_STATE.PAUSE
             },
             sortEvents: sortEvents,
-            playState: MACHINE_STATE.PAUSE,
         }
     }
 
@@ -41,7 +40,6 @@ export default class SortingAlgos extends React.Component {
         this.setState({ ...init.state });
 
         this.sortEvents = init.sortEvents;
-        this.playState = init.playState;
         clearInterval(this.intervalInstance);
         this.intervalInstance = null;
     }
@@ -79,10 +77,10 @@ export default class SortingAlgos extends React.Component {
     }
 
     togglePlayPause() {
-        if (this.playState === MACHINE_STATE.PAUSE) {
+        if (this.state.playState === MACHINE_STATE.PAUSE) {
             this.playChanges();
         }
-        else if (this.playState === MACHINE_STATE.PLAY) {
+        else if (this.state.playState === MACHINE_STATE.PLAY) {
             this.resetPlayState()
         }
     }
@@ -90,13 +88,13 @@ export default class SortingAlgos extends React.Component {
     playChanges() {
         this.intervalInstance = delayIndexLoop(this.state.sortEventIndex,
             this.sortEvents.length, this.moveForeward.bind(this), Properties.TIME_DELAY);
-        this.playState = MACHINE_STATE.PLAY;
+        this.setState({playState: MACHINE_STATE.PLAY});
     }
 
     resetPlayState() {
         clearInterval(this.intervalInstance);
         this.intervalInstance = null;
-        this.playState = MACHINE_STATE.PAUSE;
+        this.setState({playState: MACHINE_STATE.PAUSE});
     }
 
     setSortingAlgorithm(algorithm) {
@@ -136,15 +134,15 @@ export default class SortingAlgos extends React.Component {
                 {this.renderSortingTypes()}
                 <NumberView list={change.list} indexHighlights={change.indexChanges} />
                 <center>
-                    <button className="playpause-btn" onClick={this.moveBackward.bind(this)}>◀️</button>
-                    <button className="playpause-btn" onClick={this.togglePlayPause.bind(this)}>⏯</button>
-                    <button className="playpause-btn" onClick={this.moveForeward.bind(this)}>▶️</button>
+                    <button className="playpause-btn" onClick={this.moveBackward.bind(this)}>⬅️</button>
+                    <button className="playpause-btn" onClick={this.togglePlayPause.bind(this)}>{this.state.playState === MACHINE_STATE.PAUSE ? '▶️' : '⏸'}</button>
+                    <button className="playpause-btn" onClick={this.moveForeward.bind(this)}>➡️</button>
                 </center>
                 <center>
                     <button className="playpause-btn" onClick={this.initialize.bind(this)}>🔄</button>
                 </center>
                 <center>
-                    <span style={{fontFamily: "monospace"}}> [Play. Pause. Use Arrows. Learn.]</span>
+                    <span style={{ fontFamily: "monospace" }}> [Play. Pause. Use Arrows. Learn.]</span>
                 </center>
             </div>
         );

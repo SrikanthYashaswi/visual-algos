@@ -15,7 +15,7 @@ export const getRandomNumbers = (start, end, n) => {
     let range = end - start;
 
     while (n >= 0) {
-        rand = start + ((Math.random() * 10000).toFixed() % range);
+        rand = start + ((Math.random() * 100000).toFixed() % range);
         if (numbers.indexOf(rand) === -1) {
             numbers.push(rand)
             n--;
