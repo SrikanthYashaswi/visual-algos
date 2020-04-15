@@ -1,7 +1,7 @@
  - Selection Sort ✅
  - Insertion Sort ✅
  - Binary Insertion Sort
- - Merge Sort
+ - Merge Sort ✅
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
  - Quick Sort (ternary, LR ptrs)

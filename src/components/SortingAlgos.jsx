@@ -3,6 +3,7 @@ import { getRandomNumbers, delayIndexLoop } from './NumberUtil';
 import NumberView from './NumberView.js';
 import { Properties } from './Constants';
 import { sortingAlgorithms, getSortEventsForAlgorithm } from '../algorithms/SortingAlgorithmUtil';
+import Header from './Header';
 const MACHINE_STATE = {
     PLAY: 'play', PAUSE: 'pause'
 }
@@ -88,13 +89,13 @@ export default class SortingAlgos extends React.Component {
     playChanges() {
         this.intervalInstance = delayIndexLoop(this.state.sortEventIndex,
             this.sortEvents.length, this.moveForeward.bind(this), Properties.TIME_DELAY);
-        this.setState({playState: MACHINE_STATE.PLAY});
+        this.setState({ playState: MACHINE_STATE.PLAY });
     }
 
     resetPlayState() {
         clearInterval(this.intervalInstance);
         this.intervalInstance = null;
-        this.setState({playState: MACHINE_STATE.PAUSE});
+        this.setState({ playState: MACHINE_STATE.PAUSE });
     }
 
     setSortingAlgorithm(algorithm) {
@@ -113,16 +114,18 @@ export default class SortingAlgos extends React.Component {
         const algorithmList = sortingAlgorithms;
         const keys = Object.keys(algorithmList);
         return (
-            <div className="algo-select-holder">
-                {keys.map((algorithm, key) => {
-                    return <button
-                        key={key}
-                        className={`algo-select-btn ${selectedAlgorithm === algorithmList[algorithm] ? 'selected' : ''}`}
-                        onClick={this.setSortingAlgorithm.bind(this, algorithmList[algorithm])}>
-                        {algorithmList[algorithm]}
-                    </button>
-                })}
-            </div>
+            <center>
+                <div className="algo-select-holder">
+                    {keys.map((algorithm, key) => {
+                        return <button
+                            key={key}
+                            className={`algo-select-btn ${selectedAlgorithm === algorithmList[algorithm] ? 'selected' : ''}`}
+                            onClick={this.setSortingAlgorithm.bind(this, algorithmList[algorithm])}>
+                            {algorithmList[algorithm]}
+                        </button>
+                    })}
+                </div>
+            </center>
         )
     }
 
@@ -131,18 +134,19 @@ export default class SortingAlgos extends React.Component {
         const change = this.sortEvents[sortEventIndex];
         return (
             <div >
-                {this.renderSortingTypes()}
+                <Header/>
                 <NumberView list={change.list} indexHighlights={change.indexChanges} />
+                {this.renderSortingTypes()}
+                <center>
+                    <button className="playpause-btn" onClick={this.initialize.bind(this)}>🔄</button>
+                </center>
                 <center>
                     <button className="playpause-btn" onClick={this.moveBackward.bind(this)}>⬅️</button>
                     <button className="playpause-btn" onClick={this.togglePlayPause.bind(this)}>{this.state.playState === MACHINE_STATE.PAUSE ? '▶️' : '⏸'}</button>
                     <button className="playpause-btn" onClick={this.moveForeward.bind(this)}>➡️</button>
                 </center>
                 <center>
-                    <button className="playpause-btn" onClick={this.initialize.bind(this)}>🔄</button>
-                </center>
-                <center>
-                    <span style={{ fontFamily: "monospace" }}> [Play. Pause. Use Arrows. Learn.]</span>
+                    <span style={{ fontFamily: "monospace" }}> [Play. Pause. Use Arrows to watch change. Learn.]</span>
                 </center>
             </div>
         );

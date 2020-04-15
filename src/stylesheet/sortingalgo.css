@@ -1,6 +1,9 @@
 .algo-select-btn{
     height:40px;
     background-color: #fbfbfb;
+    font-size: 16px;
+    margin-right: 14px;
+    border-radius: 7px;
 }
 
 .selected{
@@ -8,8 +11,8 @@
 }
 
 .algo-select-holder{
-    display: grid;
-    width: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .playpause-btn{

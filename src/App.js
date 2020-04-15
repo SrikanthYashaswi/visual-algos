@@ -7,12 +7,14 @@ import SortingAlgos from './components/SortingAlgos';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/algos/searching" component={SearchingAlgos} />
-        <Route path="/algos/sorting" component={SortingAlgos} />
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/algos/searching" component={SearchingAlgos} />
+          <Route path="/algos/sorting" component={SortingAlgos} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
