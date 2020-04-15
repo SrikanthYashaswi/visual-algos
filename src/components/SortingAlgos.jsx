@@ -21,7 +21,7 @@ export default class SortingAlgos extends React.Component {
     }
 
     getInitState() {
-        const numbers = getRandomNumbers(10, 300, 200);
+        const numbers = getRandomNumbers(10, 300, 100);
         const sortEvents = getSortEventsForAlgorithm(sortingAlgorithms.SELECTION_SORT, [...numbers]);
 
         return {
