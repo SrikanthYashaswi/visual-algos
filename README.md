@@ -1,5 +1,7 @@
-🕒 currently working.
-✅ finished implementing.
+- 🕒 currently working
+- ✅ finished implementing
+
+----
 
  - Selection Sort ✅
  - Insertion Sort ✅
