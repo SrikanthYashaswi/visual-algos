@@ -1,18 +1,23 @@
+- 🕒 currently working
+- ✅ finished implementing
+
+----
+
  - Selection Sort ✅
  - Insertion Sort ✅
- - Binary Insertion Sort
  - Merge Sort ✅
+ - Heap Sort 🕒
+ - Bubble Sort
+ - Binary Insertion Sort
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
  - Quick Sort (ternary, LR ptrs)
  - Quick Sort (ternary, LL ptrs)
  - Quick Sort (dual pivot)
- - Bubble Sort
  - Cocktail Shaker Sort
  - Gnome Sort
  - Comb Sort
  - Shell Sort
- - Heap Sort
  - Smooth Sort
  - Odd-Even Sort
  - Bitonic Sort
