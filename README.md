@@ -10,7 +10,7 @@
  
  ### To begin with:
   - Jump to [Selection Sort](https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/selectionSort.js)
-  - In each iteration store changed array and affected index.
+  - simplest method.
   
 
 
