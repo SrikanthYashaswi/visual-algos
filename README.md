@@ -12,7 +12,14 @@
   - Jump to [Selection Sort](https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/selectionSort.js)
   - simplest method.
   
+ ### Build
+  - clone repo
+  - npm install
+  - npm start
 
+ ### Deployment
+  - Using netlify.
+  - Changes pushed to master will be deployed automatically.
 
 ### To Do.
 - 🕒 In Progress.
