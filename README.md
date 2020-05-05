@@ -31,7 +31,7 @@
  - Insertion Sort ✅
  - Merge Sort ✅
  - Heap Sort 🕒
- - Bubble Sort 🕒
+ - Bubble Sort 🕒 [icoder18](https://github.com/icoder18)
  - Binary Insertion Sort
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
