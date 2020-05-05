@@ -1,6 +1,6 @@
 ### To contribute: 
  - To start adding any algorithm,
- - Pick any algo from the list of algorithms in [src/algorithms](https://github.com/SrikanthYashaswi/visual-algos/tree/master/src/algorithms)
+ - Pick any algo from the list of algorithms in [not implemented](https://github.com/SrikanthYashaswi/visual-algos#to-do)
 ### How it works:
  - The sorting function takes in array of random numbers, provided by framework.
  - Store the array when you swap numbers along with indexes to a changes array and return it.
