@@ -1,3 +1,20 @@
+### To contribute: 
+ - To start adding any algorithm,
+ - Pick any algo from the list of algorithms in [src/algorithms](https://github.com/SrikanthYashaswi/visual-algos/tree/master/src/algorithms)
+### How it works:
+ - The sorting function takes in array of random numbers, provided by framework.
+ - Store the array when you swap numbers along with indexes to a changes array and return it.
+ - The framework will pick up and play it in sequence.
+ - Once you have the method ready, jump to (src/algorithms/SortingAlgorithmUtil.js)[https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/SortingAlgorithmUtil.js]
+ - There you can integrate your function with the framework.
+ 
+ ### To begin with:
+  - Jump to [Selection Sort](https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/selectionSort.js)
+  - In each iteration store changed array and affected index.
+  
+
+
+### To Do.
 - 🕒 currently working
 - ✅ finished implementing
 
