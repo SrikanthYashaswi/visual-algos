@@ -5,7 +5,7 @@
  - The sorting function takes in array of random numbers, provided by framework.
  - Store the array when you swap numbers along with indexes to a changes array and return it.
  - The framework will pick up and play it in sequence.
- - Once you have the method ready, jump to (src/algorithms/SortingAlgorithmUtil.js)[https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/SortingAlgorithmUtil.js]
+ - Once you have the method ready, jump to [src/algorithms/SortingAlgorithmUtil.js](https://github.com/SrikanthYashaswi/visual-algos/blob/master/src/algorithms/SortingAlgorithmUtil.js)
  - There you can integrate your function with the framework.
  
  ### To begin with:
