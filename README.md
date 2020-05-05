@@ -15,7 +15,7 @@
 
 
 ### To Do.
-- 🕒 currently working
+- 🕒 In Progress.
 - ✅ finished implementing
 
 ----
@@ -24,7 +24,7 @@
  - Insertion Sort ✅
  - Merge Sort ✅
  - Heap Sort 🕒
- - Bubble Sort
+ - Bubble Sort 🕒
  - Binary Insertion Sort
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
