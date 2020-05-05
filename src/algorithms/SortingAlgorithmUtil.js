@@ -1,11 +1,13 @@
 import { selectionSort } from './selectionSort';
 import { insertionSort } from "./insertionSort";
 import { mergeSort } from './mergeSort';
+import { bubbleSort } from './bubbleSort';
 
 export const sortingAlgorithms = {
     SELECTION_SORT: 'selection-sort',
     INSERTION_SORT: 'insertion-sort',
-    MERGE_SORT: 'merge-sort'
+    MERGE_SORT: 'merge-sort',
+    BUBBLE_SORT: 'bubble-sort'
 }
 
 export const getSortEventsForAlgorithm = (algorithm, list) => {
@@ -18,6 +20,9 @@ export const getSortEventsForAlgorithm = (algorithm, list) => {
         }
         case sortingAlgorithms.MERGE_SORT: {
             return mergeSort(list);
+        }
+        case sortingAlgorithms.BUBBLE_SORT: {
+            return bubbleSort(list);
         }
         default: {
             return []
