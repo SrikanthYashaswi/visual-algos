@@ -30,8 +30,8 @@
  - Selection Sort ✅
  - Insertion Sort ✅
  - Merge Sort ✅
+ - Bubble Sort ✅ [icoder18](https://github.com/icoder18)
  - Heap Sort 🕒
- - Bubble Sort 🕒 [here](https://github.com/SrikanthYashaswi/visual-algos/issues/4)
  - Binary Insertion Sort
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
