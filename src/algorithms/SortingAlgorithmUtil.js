@@ -2,12 +2,14 @@ import { selectionSort } from './selectionSort';
 import { insertionSort } from "./insertionSort";
 import { mergeSort } from './mergeSort';
 import { bubbleSort } from './bubbleSort';
+import { shellSort } from './shellSort';
 
 export const sortingAlgorithms = {
     SELECTION_SORT: 'selection-sort',
     INSERTION_SORT: 'insertion-sort',
     MERGE_SORT: 'merge-sort',
-    BUBBLE_SORT: 'bubble-sort'
+    BUBBLE_SORT: 'bubble-sort',
+    SHELL_SORT: 'shell-sort'
 }
 
 export const getSortEventsForAlgorithm = (algorithm, list) => {
@@ -23,6 +25,9 @@ export const getSortEventsForAlgorithm = (algorithm, list) => {
         }
         case sortingAlgorithms.BUBBLE_SORT: {
             return bubbleSort(list);
+        }
+        case sortingAlgorithms.SHELL_SORT: {
+            return shellSort(list);
         }
         default: {
             return []
