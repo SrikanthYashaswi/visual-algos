@@ -13,4 +13,3 @@ export const bubbleSort = (list) => {
     }
     return changes;
 }
-
