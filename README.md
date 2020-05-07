@@ -31,6 +31,7 @@
  - Insertion Sort ✅
  - Merge Sort ✅
  - Bubble Sort ✅ [icoder18](https://github.com/icoder18)
+ - Shell Sort ✅ [icoder18](https://github.com/icoder18)
  - Heap Sort 🕒
  - Binary Insertion Sort
  - Quick Sort (LR ptrs)
@@ -41,7 +42,6 @@
  - Cocktail Shaker Sort
  - Gnome Sort
  - Comb Sort
- - Shell Sort
  - Smooth Sort
  - Odd-Even Sort
  - Bitonic Sort
