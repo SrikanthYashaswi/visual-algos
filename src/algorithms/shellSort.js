@@ -1,4 +1,4 @@
-const shellSort=(list)=>{
+export const shellSort=(list)=>{
     let changes=[];
     changes.push({ list: [...list], indexChanges: [0, 0] });
     let gap=Math.floor(list.length/2);
