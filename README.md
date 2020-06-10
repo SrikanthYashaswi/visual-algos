@@ -33,7 +33,7 @@
  - Bubble Sort ✅ [icoder18](https://github.com/icoder18)
  - Shell Sort ✅ [icoder18](https://github.com/icoder18)
  - Heap Sort 🕒
- - Binary Insertion Sort
+ - Binary Insertion Sort ✅ [tavsec](https://github.com/tavsec)
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
  - Quick Sort (ternary, LR ptrs)
