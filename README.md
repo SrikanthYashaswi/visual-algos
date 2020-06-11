@@ -34,13 +34,13 @@
  - Shell Sort ✅ [icoder18](https://github.com/icoder18)
  - Heap Sort 🕒
  - Binary Insertion Sort
+ - Gnome Sort ✅ [tavsec](https://github.com/tavsec)
  - Quick Sort (LR ptrs)
  - Quick Sort (LL ptrs)
  - Quick Sort (ternary, LR ptrs)
  - Quick Sort (ternary, LL ptrs)
  - Quick Sort (dual pivot)
  - Cocktail Shaker Sort
- - Gnome Sort
  - Comb Sort
  - Smooth Sort
  - Odd-Even Sort
